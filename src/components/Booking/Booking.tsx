@@ -29,13 +29,14 @@ const Booking = ({
   booking: { club, date, hour, courtType, open, id, owner, players },
 }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { id: userId } = useAppSelector((state) => state.user);
+  const [alreadyAddedUser, setAlreadyAddedUser] = useState(false);
+
   const deleteBooking = (event: React.SyntheticEvent): void => {
     event.stopPropagation();
     dispatch(deleteBookingThunk(id));
   };
-  const { id: userId } = useAppSelector((state) => state.user);
-
-  const navigate = useNavigate();
 
   const goToEditPage = (event: React.SyntheticEvent): void => {
     event.stopPropagation();
@@ -46,7 +47,6 @@ const Booking = ({
     navigate(`/bookings/detail/${id}`);
   };
 
-  const [alreadyAddedUser, setAlreadyAddedUser] = useState(false);
   const addUserToPlayers = (event: React.SyntheticEvent): void => {
     event.stopPropagation();
     dispatch(

@@ -24,6 +24,7 @@ const BookingDetail = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { id } = useParams();
+  const defaultProfilePicture = "../../images/blank-profile-picture.webp";
 
   const { booking, playersUsernames } = useAppSelector(
     (state) => state.booking
@@ -49,6 +50,7 @@ const BookingDetail = (): JSX.Element => {
     );
     dispatch(getBookingAndPlayersUsernamesThunk(id as string));
   };
+
   const goToEditPage = (): void => navigate(`/bookings/editBooking/${id}`);
 
   const userBooking = booking.owner === userId;
@@ -128,7 +130,7 @@ const BookingDetail = (): JSX.Element => {
             {playersUsernames[0] ?? "Sin asignar"}
           </h4>
           <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={defaultProfilePicture}
             alt=""
             className="player-info_player-picture"
           />
@@ -138,7 +140,7 @@ const BookingDetail = (): JSX.Element => {
             {playersUsernames[1] ?? "Sin asignar"}
           </h4>
           <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={defaultProfilePicture}
             alt=""
             className="player-info_player-picture"
           />
@@ -148,7 +150,7 @@ const BookingDetail = (): JSX.Element => {
             {playersUsernames[2] ?? "Sin asignar"}
           </h4>
           <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={defaultProfilePicture}
             alt=""
             className="player-info_player-picture"
           />
@@ -158,7 +160,7 @@ const BookingDetail = (): JSX.Element => {
             {playersUsernames[3] ?? "Sin asignar"}
           </h4>
           <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src={defaultProfilePicture}
             alt=""
             className="player-info_player-picture"
           />

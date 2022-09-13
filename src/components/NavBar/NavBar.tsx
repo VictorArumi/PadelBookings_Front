@@ -7,11 +7,12 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
 function NavBar() {
+  const dispatch = useAppDispatch();
+
   const { logged, profilePicture, profilePictureBackup, username } =
     useAppSelector((state) => state.user);
 
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useAppDispatch();
 
   const closeNavBar = () => setIsOpen(false);
 

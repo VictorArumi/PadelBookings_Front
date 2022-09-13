@@ -7,6 +7,8 @@ import { useAppDispatch } from "../../redux/store/hooks";
 import loginThunk from "../../redux/thunks/loginThunk";
 
 const LoginForm = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const emptyFormValues: ILoginForm = {
     username: "",
     password: "",
@@ -17,8 +19,6 @@ const LoginForm = (): JSX.Element => {
   const changeData = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
-
-  const dispatch = useAppDispatch();
 
   const loginSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
