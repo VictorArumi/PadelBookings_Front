@@ -33,6 +33,9 @@ const BookingForm = ({
     open: open,
   };
 
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const [submitButtonDisabled, setSubmitButtonDisabled] =
     useState<boolean>(true);
 
@@ -64,9 +67,6 @@ const BookingForm = ({
     });
   };
 
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
   const createBookingSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
@@ -84,11 +84,13 @@ const BookingForm = ({
       ].filter((player) => player !== "" && typeof player !== "undefined"),
       open: checkIfBookingIsFull() ? false : openBooking,
     };
+
     if (editMode) {
       dispatch(editBookingThunk(formData, bookingId));
       setTimeout(() => navigate(-1), 1000);
       return;
     }
+
     dispatch(createBookingThunk(formData));
     setTimeout(() => navigate("/bookings"), 1000);
   };

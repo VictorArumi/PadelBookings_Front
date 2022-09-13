@@ -15,7 +15,9 @@ const registerThunk =
       isLoading: true,
       position: "top-center",
     });
+
     const url: string = `${process.env.REACT_APP_API_URL}user/register`;
+
     try {
       const {
         data: { username },
@@ -37,6 +39,7 @@ const registerThunk =
         autoClose: 1000,
         closeOnClick: true,
       });
+
       return "Error en el registro";
     }
   };
