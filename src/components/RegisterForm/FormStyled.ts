@@ -5,7 +5,7 @@ const FormStyled = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+
   margin-top: 1.5rem;
 
   .register-form {
@@ -18,7 +18,6 @@ const FormStyled = styled.div`
   label {
     width: 12rem;
     margin-bottom: 10px;
-    background-color: #fff;
     text-align: left;
   }
   .inputs-container {
@@ -28,11 +27,11 @@ const FormStyled = styled.div`
   }
 
   input {
+    background-color: #fff;
     width: 12rem;
     height: 2rem;
     padding-left: 8px;
     margin-top: 4px;
-    background-color: #f2f2f2;
     border: 0.05rem #c4c4c4 solid;
     border-radius: 0.25rem;
 

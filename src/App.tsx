@@ -1,7 +1,6 @@
 import jwtDecode from "jwt-decode";
 import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
 import AppStyled from "./AppStyled";
 import LoginControl from "./components/LoginControl/LoginControl";
 import LogoutControl from "./components/LogoutControl/LogoutControl";
@@ -30,83 +29,85 @@ function App() {
 
   return (
     <>
-      <AppStyled>
-        <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <LoginControl>
-                <Navigate to="/bookings" />
-              </LoginControl>
-            }
-          />
-          <Route
-            path="/bookings"
-            element={
-              <LoginControl>
-                <BookingsPage />
-              </LoginControl>
-            }
-          />
-          <Route
-            path="/bookings/mybookings/:username"
-            element={
-              <LoginControl>
-                <BookingsPage />
-              </LoginControl>
-            }
-          />
-          <Route
-            path="/bookings/create"
-            element={
-              <LoginControl>
-                <CreateBookingPage />
-              </LoginControl>
-            }
-          />
-          <Route
-            path="/bookings/detail/:id"
-            element={
-              <LoginControl>
-                <BookingDetailPage />
-              </LoginControl>
-            }
-          />
-          <Route
-            path="/bookings/editBooking/:id"
-            element={
-              <LoginControl>
-                <EditBookingPage />
-              </LoginControl>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <LogoutControl>
-                <LoginPage />
-              </LogoutControl>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <LogoutControl>
-                <RegisterPage />
-              </LogoutControl>
-            }
-          />
-          <Route
-            path="/*"
-            element={
-              <LoginControl>
-                <NotFoundPage />
-              </LoginControl>
-            }
-          />
-        </Routes>
-      </AppStyled>
+      <div className="app-container bg-customblue/20">
+        <AppStyled>
+          <NavBar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <LoginControl>
+                  <Navigate to="/bookings" />
+                </LoginControl>
+              }
+            />
+            <Route
+              path="/bookings"
+              element={
+                <LoginControl>
+                  <BookingsPage />
+                </LoginControl>
+              }
+            />
+            <Route
+              path="/bookings/mybookings/:username"
+              element={
+                <LoginControl>
+                  <BookingsPage />
+                </LoginControl>
+              }
+            />
+            <Route
+              path="/bookings/create"
+              element={
+                <LoginControl>
+                  <CreateBookingPage />
+                </LoginControl>
+              }
+            />
+            <Route
+              path="/bookings/detail/:id"
+              element={
+                <LoginControl>
+                  <BookingDetailPage />
+                </LoginControl>
+              }
+            />
+            <Route
+              path="/bookings/editBooking/:id"
+              element={
+                <LoginControl>
+                  <EditBookingPage />
+                </LoginControl>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <LogoutControl>
+                  <LoginPage />
+                </LogoutControl>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <LogoutControl>
+                  <RegisterPage />
+                </LogoutControl>
+              }
+            />
+            <Route
+              path="/*"
+              element={
+                <LoginControl>
+                  <NotFoundPage />
+                </LoginControl>
+              }
+            />
+          </Routes>
+        </AppStyled>
+      </div>
     </>
   );
 }

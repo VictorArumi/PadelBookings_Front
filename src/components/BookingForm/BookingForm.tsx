@@ -307,7 +307,7 @@ const BookingForm = ({
         <p
           className={
             "w-56  text-red-600 text-sm mb-6 " +
-            (!submitButtonDisabled ? "invisible" : "")
+            (!submitButtonDisabled ? "hidden" : "")
           }
         >
           Completa todos los datos no opcionales para poder enviar el formulario
