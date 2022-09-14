@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const BookingsPageStyled = styled.div`
-  background-color: rgb(25, 116, 182, 0.2);
   height: 100%;
 
   .filters-container {
