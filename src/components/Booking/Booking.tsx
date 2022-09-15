@@ -9,6 +9,7 @@ import {
   faHome,
   faLock,
   faTrash,
+  faUserMinus,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { IBooking } from "../../types/types";
@@ -17,6 +18,7 @@ import {
   addUserToBookingPlayersThunk,
   deleteBookingThunk,
   getBookingAndPlayersUsernamesThunk,
+  removeUserFromBookingPlayersThunk,
 } from "../../redux/thunks/bookingsThunks/bookingsThunks";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -54,6 +56,17 @@ const Booking = ({
     );
     dispatch(getBookingAndPlayersUsernamesThunk(id as string));
     setAlreadyAddedUser(true);
+  };
+
+  const removeUserFromPlayers = (event: React.SyntheticEvent): void => {
+    event.stopPropagation();
+
+    const updatedPlayers = players.filter(
+      (playerId) => playerId !== (userId as string)
+    );
+
+    dispatch(removeUserFromBookingPlayersThunk(id as string, updatedPlayers));
+    dispatch(getBookingAndPlayersUsernamesThunk(id as string));
   };
 
   const userBooking = owner === userId;
@@ -119,6 +132,13 @@ const Booking = ({
           hidden={userBooking || !open || alreadyAddedUser}
         >
           <FontAwesomeIcon icon={faUserPlus} />
+        </button>
+        <button
+          onClick={removeUserFromPlayers}
+          title="Salir de esta reserva"
+          className="add-button"
+        >
+          <FontAwesomeIcon icon={faUserMinus} />
         </button>
         <button
           title="Eliminar reserva"
