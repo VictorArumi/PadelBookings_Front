@@ -203,6 +203,13 @@ export const addUserToBookingPlayersThunk =
     }
   };
 
+export const removeUserFromBookingPlayersThunk =
+  (id: string, players: string[]) => async (dispatch: AppDispatch) => {
+    const url: string = `${process.env.REACT_APP_API_URL}bookings/edit/addplayer/${id}`;
+
+    await axios.put<AxiosCreateBookingResponse>(url, players, getAuthData());
+  };
+
 export const getBookingAndPlayersUsernamesThunk =
   (requestedBookingId: string) => async (dispatch: AppDispatch) => {
     const url: string = `${process.env.REACT_APP_API_URL}bookings/detail/${requestedBookingId}`;
