@@ -192,7 +192,7 @@ export const addUserToBookingPlayersThunk =
         isLoading: false,
         autoClose: 1300,
       });
-      dispatch(getBookingAndPlayersUsernamesThunk(id as string));
+      dispatch(getBookingAndPlayersUsernamesThunk(id));
     } catch (error: any) {
       toast.update(updateToastId, {
         render: `Error al añadirte a la reserva`,
