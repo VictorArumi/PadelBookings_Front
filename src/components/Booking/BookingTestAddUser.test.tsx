@@ -19,6 +19,7 @@ describe("Given a Booking component", () => {
     test("Then dispatch should be called", () => {});
 
     const joinBookingButtonTitle = "Unirse a esta reserva";
+    const leaveBookingButtonTitle = "Salir de esta reserva";
 
     const mockBooking = {
       club: "RCTB",
@@ -42,6 +43,10 @@ describe("Given a Booking component", () => {
     const joinButton = screen.getByTitle(joinBookingButtonTitle);
 
     userEvent.click(joinButton);
+
+    const leaveButton = screen.getByTitle(leaveBookingButtonTitle);
+
+    userEvent.click(leaveButton);
 
     expect(mockDispatch).toHaveBeenCalled();
   });
