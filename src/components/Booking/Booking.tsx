@@ -34,6 +34,7 @@ const Booking = ({
   const navigate = useNavigate();
   const { id: userId } = useAppSelector((state) => state.user);
   const [alreadyAddedUser, setAlreadyAddedUser] = useState(false);
+  const [alreadyRemovedUser, setAlreadyRemovedUser] = useState(false);
 
   const deleteBooking = (event: React.SyntheticEvent): void => {
     event.stopPropagation();
@@ -65,11 +66,15 @@ const Booking = ({
       (playerId) => playerId !== (userId as string)
     );
 
-    dispatch(removeUserFromBookingPlayersThunk(id as string, updatedPlayers));
-    dispatch(getBookingAndPlayersUsernamesThunk(id as string));
+    dispatch(removeUserFromBookingPlayersThunk(id, updatedPlayers));
+    dispatch(getBookingAndPlayersUsernamesThunk(id));
+    setAlreadyRemovedUser(true);
   };
 
   const userBooking = owner === userId;
+  const userInBookingNotAsOwner: Boolean = players
+    .slice(0)
+    .includes(userId as string);
 
   return (
     <BookingStyled onClick={goToDetailPage}>
@@ -137,6 +142,7 @@ const Booking = ({
           onClick={removeUserFromPlayers}
           title="Salir de esta reserva"
           className="add-button"
+          hidden={userBooking || !userInBookingNotAsOwner || alreadyRemovedUser}
         >
           <FontAwesomeIcon icon={faUserMinus} />
         </button>
