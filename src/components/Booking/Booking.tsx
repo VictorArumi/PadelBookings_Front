@@ -33,8 +33,14 @@ const Booking = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id: userId } = useAppSelector((state) => state.user);
+
   const [alreadyAddedUser, setAlreadyAddedUser] = useState(false);
   const [alreadyRemovedUser, setAlreadyRemovedUser] = useState(false);
+
+  const userBooking = owner === userId;
+  const userInBookingNotAsOwner: Boolean = players
+    .slice(0)
+    .includes(userId as string);
 
   const deleteBooking = (event: React.SyntheticEvent): void => {
     event.stopPropagation();
@@ -70,11 +76,6 @@ const Booking = ({
     dispatch(getBookingAndPlayersUsernamesThunk(id));
     setAlreadyRemovedUser(true);
   };
-
-  const userBooking = owner === userId;
-  const userInBookingNotAsOwner: Boolean = players
-    .slice(0)
-    .includes(userId as string);
 
   return (
     <BookingStyled onClick={goToDetailPage}>
