@@ -22,9 +22,9 @@ describe("Given a BookingsPage component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const deleteButton = screen.getByTitle("Eliminar reserva");
+      const deleteBookingButton = screen.getByTitle("Eliminar reserva");
 
-      userEvent.click(deleteButton);
+      userEvent.click(deleteBookingButton);
 
       expect(mockDispatch).toBeCalledTimes(2);
     });
@@ -38,9 +38,9 @@ describe("Given a BookingsPage component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const joinButton = screen.getByTitle("Unirse a esta reserva");
+      const joinBookingButton = screen.getByTitle("Unirse a esta reserva");
 
-      userEvent.click(joinButton);
+      userEvent.click(joinBookingButton);
 
       expect(mockDispatch).toBeCalledTimes(3);
     });
