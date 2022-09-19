@@ -38,7 +38,7 @@ const Booking = ({
   const [alreadyRemovedUser, setAlreadyRemovedUser] = useState(false);
 
   const userBooking = owner === userId;
-  const userInBookingNotAsOwner: Boolean = players
+  const userInBookingNotAsOwner: boolean = players
     .slice(0)
     .includes(userId as string);
 

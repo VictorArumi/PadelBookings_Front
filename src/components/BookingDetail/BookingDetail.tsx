@@ -36,7 +36,7 @@ const BookingDetail = (): JSX.Element => {
 
   const userBooking = booking.owner === userId;
 
-  const userInBookingNotAsOwner: Boolean = booking.players
+  const userInBookingNotAsOwner: boolean = booking.players
     .slice(0)
     .includes(userId as string);
 
