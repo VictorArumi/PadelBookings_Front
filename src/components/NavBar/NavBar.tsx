@@ -4,10 +4,11 @@ import NavBarStyled from "./NavBarStyled";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
 import { logOutActionCreator } from "../../redux/features/userSlice";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { logged, profilePicture, profilePictureBackup, username } =
     useAppSelector((state) => state.user);
@@ -21,6 +22,7 @@ function NavBar() {
     localStorage.removeItem("token");
     dispatch(logOutActionCreator());
     setIsOpen(!isOpen);
+    navigate("/login");
     toast.success("Sesión cerrada, vuelve pronto!");
   };
 

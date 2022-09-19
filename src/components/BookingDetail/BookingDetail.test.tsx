@@ -12,7 +12,7 @@ jest.mock("react-redux", () => ({
   useDispatch: () => mockDispatch,
 }));
 
-describe("Given a BookingsPage component", () => {
+describe("Given a BookingDetail component", () => {
   describe("When it's invoked and the user clicks on delete button", () => {
     test("Then dispatch should be called", () => {
       render(
@@ -29,6 +29,7 @@ describe("Given a BookingsPage component", () => {
       expect(mockDispatch).toBeCalledTimes(2);
     });
   });
+
   describe("When it's invoked and the user clicks on join button", () => {
     test("Then dispatch should be called", () => {
       render(
@@ -41,6 +42,23 @@ describe("Given a BookingsPage component", () => {
       const joinBookingButton = screen.getByTitle("Unirse a esta reserva");
 
       userEvent.click(joinBookingButton);
+
+      expect(mockDispatch).toBeCalledTimes(3);
+    });
+  });
+
+  describe("When it's invoked and the user clicks on remove button", () => {
+    test("Then dispatch should be called", () => {
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <BookingDetail />
+          </Provider>
+        </BrowserRouter>
+      );
+      const leaveBookingButton = screen.getByTitle("Salir de esta reserva");
+
+      userEvent.click(leaveBookingButton);
 
       expect(mockDispatch).toBeCalledTimes(3);
     });
