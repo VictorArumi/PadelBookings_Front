@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+<h1 align="center">PadelBookings</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+Padel Bookings is a web application that simulates a real booking platform for padel games.<br/><br/>
+You can either log in with your user or create a new one by registering. (feel free to login with username "Guest" and password "Guest " if you don't want to register).
+<br/>
+<br/>
+Once you are logged in you will be redirected to the home page where you will see all the current bookings, and if you are looking for some action you can either join an existing booking or create a new one and add your friends to the game.
+<br/>
+When creating a new booking you can set the club, date and time of the game, type of court (indoor or outdoor), and specify the players that will play with you. Don't worry if you haven't found 3 other players yet, you can choose to leave the booking 'open' and any available player will join your booking shortly! If you prefer you can keep it closed and add other players later editing the booking.
+<br/>
+If you want to see the details and the players of a booking, you can click on it and you will see a detail page, where you can also join the booking if it's not yours and edit or delete it if you are the booking owner.
+<br/>
+Once you are done you can keep logged or if you prefer it you can logout.
+<br/>
+Happy boooking and happy playing!
+<br/>
 
-In the project directory, you can run:
+## 🚀 Technologies
 
-### `npm start`
+- [React](https://reactjs.org/)
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Redux](https://redux.js.org/)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- [Styled Components](https://styled-components.com/)
+- [Firebase](https://firebase.google.com/)
+- [Netlify](https://www.netlify.com)
+- [ExpressJS](https://expressjs.com)
+- [NodeJS](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com)
+- [JWT](https://jwt.io)
+- [Jest](https://jestjs.io)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Links
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🎾 [PadelBookings](https://padelbookings.netlify.app/)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ⌨️ [Back deploy Heroku](https://padelbookings.herokuapp.com/)
