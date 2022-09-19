@@ -187,7 +187,7 @@ export const addUserToBookingPlayersThunk =
       await axios.put<AxiosCreateBookingResponse>(url, players, getAuthData());
 
       toast.update(updateToastId, {
-        render: `Has sido añadido a la reserva!`,
+        render: `Has sido añadido a esta reserva!`,
         type: "success",
         isLoading: false,
         autoClose: 1300,
@@ -208,6 +208,7 @@ export const removeUserFromBookingPlayersThunk =
     const url: string = `${process.env.REACT_APP_API_URL}bookings/edit/addplayer/${id}`;
 
     await axios.put<AxiosCreateBookingResponse>(url, players, getAuthData());
+    toast.success("Te has eliminado con éxito de ésta reserva");
   };
 
 export const getBookingAndPlayersUsernamesThunk =

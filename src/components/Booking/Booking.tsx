@@ -63,6 +63,7 @@ const Booking = ({
     );
     dispatch(getBookingAndPlayersUsernamesThunk(id as string));
     setAlreadyAddedUser(true);
+    setTimeout(() => navigate(`/bookings/detail/${id}`), 1500);
   };
 
   const removeUserFromPlayers = (event: React.SyntheticEvent): void => {
@@ -75,6 +76,7 @@ const Booking = ({
     dispatch(removeUserFromBookingPlayersThunk(id, updatedPlayers));
     dispatch(getBookingAndPlayersUsernamesThunk(id));
     setAlreadyRemovedUser(true);
+    setTimeout(() => navigate(`/bookings/detail/${id}`), 1500);
   };
 
   return (
