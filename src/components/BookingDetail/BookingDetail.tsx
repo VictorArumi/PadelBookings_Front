@@ -9,6 +9,7 @@ import {
   faHome,
   faLock,
   faTrash,
+  faUserMinus,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
@@ -16,6 +17,7 @@ import {
   addUserToBookingPlayersThunk,
   deleteBookingThunk,
   getBookingAndPlayersUsernamesThunk,
+  removeUserFromBookingPlayersThunk,
 } from "../../redux/thunks/bookingsThunks/bookingsThunks";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -23,7 +25,7 @@ import { useEffect } from "react";
 const BookingDetail = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { id } = useParams();
+  const { id: bookingId } = useParams();
   const defaultProfilePicture = "../../images/blank-profile-picture.webp";
 
   const { booking, playersUsernames } = useAppSelector(
@@ -32,28 +34,46 @@ const BookingDetail = (): JSX.Element => {
 
   const { id: userId } = useAppSelector((state) => state.user);
 
+  const userBooking = booking.owner === userId;
+
+  const userInBookingNotAsOwner: Boolean = booking.players
+    .slice(0)
+    .includes(userId as string);
+
   useEffect(() => {
-    dispatch(getBookingAndPlayersUsernamesThunk(id as string));
-  }, [dispatch, id]);
+    dispatch(getBookingAndPlayersUsernamesThunk(bookingId as string));
+  }, [dispatch, bookingId]);
 
   const deleteBooking = () => {
-    dispatch(deleteBookingThunk(id as string));
+    dispatch(deleteBookingThunk(bookingId as string));
     setTimeout(() => navigate(-1), 1000);
   };
 
   const addUserToPlayers = () => {
     dispatch(
-      addUserToBookingPlayersThunk(id as string, [
+      addUserToBookingPlayersThunk(bookingId as string, [
         ...booking.players,
         userId as string,
       ])
     );
-    dispatch(getBookingAndPlayersUsernamesThunk(id as string));
+    dispatch(getBookingAndPlayersUsernamesThunk(bookingId as string));
   };
 
-  const goToEditPage = (): void => navigate(`/bookings/editBooking/${id}`);
+  const removeUserFromPlayers = (event: React.SyntheticEvent): void => {
+    event.stopPropagation();
 
-  const userBooking = booking.owner === userId;
+    const updatedPlayers = booking.players.filter(
+      (playerId) => playerId !== (userId as string)
+    );
+
+    dispatch(
+      removeUserFromBookingPlayersThunk(bookingId as string, updatedPlayers)
+    );
+    dispatch(getBookingAndPlayersUsernamesThunk(bookingId as string));
+  };
+
+  const goToEditPage = (): void =>
+    navigate(`/bookings/editBooking/${bookingId}`);
 
   return (
     <BookingDetailStyled>
@@ -111,6 +131,14 @@ const BookingDetail = (): JSX.Element => {
             hidden={userBooking || !booking.open}
           >
             <FontAwesomeIcon icon={faUserPlus} />
+          </button>
+          <button
+            onClick={removeUserFromPlayers}
+            title="Salir de esta reserva"
+            className="add-button"
+            hidden={userBooking || !userInBookingNotAsOwner}
+          >
+            <FontAwesomeIcon icon={faUserMinus} />
           </button>
           <button
             title="Eliminar reserva"

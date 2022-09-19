@@ -14,7 +14,7 @@ If you want to see the details and the players of a booking, you can click on it
 <br/>
 Once you are done you can keep logged or if you prefer it you can logout.
 <br/>
-Happy boooking and happy playing!
+Happy boooking and have a good game!
 <br/>
 
 ## 🚀 Technologies
